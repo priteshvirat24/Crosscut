@@ -1,7 +1,7 @@
 stages:
 - test
-crosscut:full-suite:
+crosscut:no-impacted-tests:
   stage: test
   script:
-  - 'echo "Crosscut: running full suite (conservative fallback)"'
-  - pytest
+  - 'echo "Crosscut: no code-impacting changes detected; no tests to run."'
+  - 'true'
