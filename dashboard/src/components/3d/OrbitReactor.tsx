@@ -68,6 +68,11 @@ function DependencyGraph({ currentStage }: { currentStage: number }) {
   const centerNodeRef = useRef<THREE.Mesh>(null);
   const repoRefs = useRef<(THREE.Mesh | null)[]>([]);
 
+  // Shared geometry and materials for massive performance boost
+  const testGeo = useMemo(() => new THREE.SphereGeometry(0.15, 8, 8), []);
+  const targetMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#E5484D", roughness: 0.2, metalness: 0.8 }), []);
+  const ambientMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#8B8D86", roughness: 0.2, metalness: 0.8, transparent: true, opacity: 0.3 }), []);
+
   useFrame((state, delta) => {
     if (!groupRef.current) return;
 
@@ -163,20 +168,13 @@ function DependencyGraph({ currentStage }: { currentStage: number }) {
 
       {/* TEST CLOUD NODES */}
       {testNodes.map((node, i) => (
-        <Sphere
+        <mesh
           key={node.id}
           ref={(el) => { testRefs.current[i] = el; }}
-          args={[0.15, 16, 16]}
           position={node.pos}
-        >
-          <meshStandardMaterial
-            color={node.isTarget ? "#E5484D" : "#8B8D86"}
-            roughness={0.2}
-            metalness={0.8}
-            transparent
-            opacity={node.isTarget ? 1 : 0.3}
-          />
-        </Sphere>
+          geometry={testGeo}
+          material={node.isTarget ? targetMat : ambientMat}
+        />
       ))}
 
     </group>
@@ -186,7 +184,11 @@ function DependencyGraph({ currentStage }: { currentStage: number }) {
 export function OrbitReactor({ currentStage = -1 }: { currentStage?: number }) {
   return (
     <div className="w-full h-full bg-transparent relative overflow-hidden flex items-center justify-center">
-      <Canvas camera={{ position: [0, 0, 25], fov: 45 }}>
+      <Canvas 
+        camera={{ position: [0, 0, 25], fov: 45 }}
+        dpr={[1, 1.5]}
+        performance={{ min: 0.5 }}
+      >
         <ambientLight intensity={1.5} />
         <directionalLight position={[10, 10, 5]} intensity={2} color="#ffffff" />
         <directionalLight position={[-10, -10, -5]} intensity={1} color="#FAFAF8" />
