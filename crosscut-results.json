@@ -1,10 +1,1216 @@
 {
   "metrics": {
     "total_tests": 160,
-    "selected_tests": 0,
-    "percentage_reduction": 100.0
+    "selected_tests": 160,
+    "percentage_reduction": 0.0
   },
-  "run_full_suite": false,
-  "selected_tests": [],
-  "changed_symbols": []
+  "run_full_suite": true,
+  "selected_tests": [
+    {
+      "name": "test_cli_handles_no_changes",
+      "file_path": "backend/tests/unit/test_crosscut/test_cli.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_cli_handles_no_changes",
+      "file_path": "backend/tests/unit/test_crosscut/test_cli.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_cli_writes_pipeline_and_comment",
+      "file_path": "backend/tests/unit/test_crosscut/test_cli.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_cli_writes_pipeline_and_comment",
+      "file_path": "backend/tests/unit/test_crosscut/test_cli.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_is_test_class",
+      "file_path": "backend/tests/unit/test_crosscut/test_conventions.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_is_test_class",
+      "file_path": "backend/tests/unit/test_crosscut/test_conventions.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_is_test_definition_false_positive_guards",
+      "file_path": "backend/tests/unit/test_crosscut/test_conventions.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_is_test_definition_false_positive_guards",
+      "file_path": "backend/tests/unit/test_crosscut/test_conventions.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_is_test_definition_true_for_test_functions",
+      "file_path": "backend/tests/unit/test_crosscut/test_conventions.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_is_test_definition_true_for_test_functions",
+      "file_path": "backend/tests/unit/test_crosscut/test_conventions.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_is_test_file_dir_based",
+      "file_path": "backend/tests/unit/test_crosscut/test_conventions.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_is_test_file_dir_based",
+      "file_path": "backend/tests/unit/test_crosscut/test_conventions.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_is_test_file_excludes_dunder_and_conftest",
+      "file_path": "backend/tests/unit/test_crosscut/test_conventions.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_is_test_file_excludes_dunder_and_conftest",
+      "file_path": "backend/tests/unit/test_crosscut/test_conventions.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_is_test_file_recognizes_patterns",
+      "file_path": "backend/tests/unit/test_crosscut/test_conventions.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_is_test_file_recognizes_patterns",
+      "file_path": "backend/tests/unit/test_crosscut/test_conventions.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_is_test_filename_strict",
+      "file_path": "backend/tests/unit/test_crosscut/test_conventions.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_is_test_filename_strict",
+      "file_path": "backend/tests/unit/test_crosscut/test_conventions.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_test_file_matches_source",
+      "file_path": "backend/tests/unit/test_crosscut/test_conventions.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_test_file_matches_source",
+      "file_path": "backend/tests/unit/test_crosscut/test_conventions.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_test_file_matches_source_ignores_generic_stems",
+      "file_path": "backend/tests/unit/test_crosscut/test_conventions.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_test_file_matches_source_ignores_generic_stems",
+      "file_path": "backend/tests/unit/test_crosscut/test_conventions.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_added_class",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_added_class",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_changed_files_helper",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_changed_files_helper",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_class_change_detected_as_class",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_class_change_detected_as_class",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_empty_diff",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_empty_diff",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_function_added",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_function_added",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_function_deleted",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_function_deleted",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_javascript_function",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_javascript_function",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_keyword_lines_not_treated_as_symbols",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_keyword_lines_not_treated_as_symbols",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_malformed_diff_does_not_crash",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_malformed_diff_does_not_crash",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_multi_file_diff",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_multi_file_diff",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_no_change_lines_returns_empty",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_no_change_lines_returns_empty",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_non_code_file_change_yields_no_symbols",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_non_code_file_change_yields_no_symbols",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_rename_emits_rename_changes",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_rename_emits_rename_changes",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_return_type_change_python",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_return_type_change_python",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_signature_param_added",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_signature_param_added",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_typescript_arrow_added",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_typescript_arrow_added",
+      "file_path": "backend/tests/unit/test_crosscut/test_diff.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_build_graph_direct_edges",
+      "file_path": "backend/tests/unit/test_crosscut/test_orbit_client.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_build_graph_direct_edges",
+      "file_path": "backend/tests/unit/test_crosscut/test_orbit_client.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_build_graph_handles_null_fields",
+      "file_path": "backend/tests/unit/test_crosscut/test_orbit_client.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_build_graph_handles_null_fields",
+      "file_path": "backend/tests/unit/test_crosscut/test_orbit_client.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_build_graph_skips_self_loops",
+      "file_path": "backend/tests/unit/test_crosscut/test_orbit_client.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_build_graph_skips_self_loops",
+      "file_path": "backend/tests/unit/test_crosscut/test_orbit_client.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_build_inventory_maps_tests_and_detects_unmapped",
+      "file_path": "backend/tests/unit/test_crosscut/test_orbit_client.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_build_inventory_maps_tests_and_detects_unmapped",
+      "file_path": "backend/tests/unit/test_crosscut/test_orbit_client.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_build_inventory_marks_mapped_files_not_unmapped",
+      "file_path": "backend/tests/unit/test_crosscut/test_orbit_client.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_build_inventory_marks_mapped_files_not_unmapped",
+      "file_path": "backend/tests/unit/test_crosscut/test_orbit_client.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_call_pairs_sql_includes_all_three_edge_sources",
+      "file_path": "backend/tests/unit/test_crosscut/test_orbit_client.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_call_pairs_sql_includes_all_three_edge_sources",
+      "file_path": "backend/tests/unit/test_crosscut/test_orbit_client.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_index_only_in_local_mode",
+      "file_path": "backend/tests/unit/test_crosscut/test_orbit_client.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_index_only_in_local_mode",
+      "file_path": "backend/tests/unit/test_crosscut/test_orbit_client.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_real_orbit_graph_has_definitions",
+      "file_path": "backend/tests/unit/test_crosscut/test_orbit_client.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_real_orbit_graph_has_definitions",
+      "file_path": "backend/tests/unit/test_crosscut/test_orbit_client.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_remote_mode_requires_credentials",
+      "file_path": "backend/tests/unit/test_crosscut/test_orbit_client.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_remote_mode_requires_credentials",
+      "file_path": "backend/tests/unit/test_crosscut/test_orbit_client.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_comment_full_suite_message",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_comment_full_suite_message",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_comment_has_escape_hatch",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_comment_has_escape_hatch",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_comment_includes_measured_timing_when_present",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_comment_includes_measured_timing_when_present",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_comment_leads_with_headline_number",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_comment_leads_with_headline_number",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_comment_no_llm_claim_present",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_comment_no_llm_claim_present",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_comment_omits_timing_when_not_measured",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_comment_omits_timing_when_not_measured",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_comment_shows_per_test_rationale",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_comment_shows_per_test_rationale",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_comment_states_mode",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_comment_states_mode",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_pipeline_full_suite",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_pipeline_full_suite",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_pipeline_injects_image_and_before_script",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_pipeline_injects_image_and_before_script",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_pipeline_is_valid_yaml",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_pipeline_is_valid_yaml",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_pipeline_no_hardcoded_reduction_numbers",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_pipeline_no_hardcoded_reduction_numbers",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_pipeline_omits_image_when_not_set",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_pipeline_omits_image_when_not_set",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_pipeline_quotes_paths_with_spaces",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_pipeline_quotes_paths_with_spaces",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_pipeline_respects_custom_test_command",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_pipeline_respects_custom_test_command",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_pipeline_targeted_runs_only_selected_files",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_pipeline_targeted_runs_only_selected_files",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_pipeline_zero_selected_is_explicit_not_silent",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_pipeline_zero_selected_is_explicit_not_silent",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_selected_files_dedup",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_selected_files_dedup",
+      "file_path": "backend/tests/unit/test_crosscut/test_pipeline_and_comment.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_measure_full_suite_runs_once",
+      "file_path": "backend/tests/unit/test_crosscut/test_runner.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_measure_full_suite_runs_once",
+      "file_path": "backend/tests/unit/test_crosscut/test_runner.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_measure_returns_real_measured_timing",
+      "file_path": "backend/tests/unit/test_crosscut/test_runner.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_measure_returns_real_measured_timing",
+      "file_path": "backend/tests/unit/test_crosscut/test_runner.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_added_symbol_with_callers_selected",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_added_symbol_with_callers_selected",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_changed_test_file_included",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_changed_test_file_included",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_cycle_terminates",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_cycle_terminates",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_deleted_symbol_selects_prior_callers_tests",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_deleted_symbol_selects_prior_callers_tests",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_depth_limit_excludes_far_tests",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_depth_limit_excludes_far_tests",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_depth_recorded_increases_with_distance",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_depth_recorded_increases_with_distance",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_direct_caller_test_selected",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_direct_caller_test_selected",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_full_suite_includes_unmapped_files",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_full_suite_includes_unmapped_files",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_metrics_counts_and_percentage",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_metrics_counts_and_percentage",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_metrics_percentage_zero_when_no_tests",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_metrics_percentage_zero_when_no_tests",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_mode_is_passed_through",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_mode_is_passed_through",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_multiple_changed_symbols_union",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_multiple_changed_symbols_union",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_n_hop_chain",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_n_hop_chain",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_new_test_file_included",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_new_test_file_included",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_no_changes_selects_nothing",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_no_changes_selects_nothing",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_reason_names_changed_symbol",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_reason_names_changed_symbol",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_results_are_sorted_deterministically",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_results_are_sorted_deterministically",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_shallowest_reason_wins_on_multiple_paths",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_shallowest_reason_wins_on_multiple_paths",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_symbol_no_callers_no_matching_test_runs_full_suite",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_symbol_no_callers_no_matching_test_runs_full_suite",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_symbol_no_callers_runs_own_file_tests",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_symbol_no_callers_runs_own_file_tests",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_transitive_caller_two_hops",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_transitive_caller_two_hops",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_unmapped_changed_source_runs_full_suite",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_unmapped_changed_source_runs_full_suite",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_unmapped_test_file_always_included",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_unmapped_test_file_always_included",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_unrelated_test_not_selected",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    },
+    {
+      "name": "test_unrelated_test_not_selected",
+      "file_path": "backend/tests/unit/test_crosscut/test_selection.py",
+      "reason": "Full suite (conservative fallback)",
+      "changed_symbol": null,
+      "depth": 0
+    }
+  ],
+  "changed_symbols": [
+    "get_cors_origins",
+    "__init__",
+    "DashboardLayout",
+    "LeftPanel",
+    "RightPanel",
+    "handleExecute",
+    "parseInt",
+    "OperationalMap",
+    "animate",
+    "getSeverityClass",
+    "SchematicMap",
+    "LoadedTextureMaterial",
+    "SafeGLTF",
+    "LoadedGLTF",
+    "SafeGLTF",
+    "LoadedGLTF",
+    "usePanZoom",
+    "headers",
+    "rng",
+    "band",
+    "bandColor",
+    "densBand",
+    "makePlatform",
+    "renderList",
+    "renderMarkers",
+    "showPeek",
+    "barChart",
+    "gaugeSVG",
+    "pol",
+    "arc",
+    "seg",
+    "ringSVG",
+    "renderDash",
+    "kpi",
+    "dUp",
+    "openDash",
+    "closeDash",
+    "fireBanner",
+    "tick",
+    "rng",
+    "band",
+    "bColor",
+    "densBand",
+    "makePF",
+    "buildMap",
+    "axis",
+    "chartVol",
+    "chartLat",
+    "chartVar",
+    "statusLabel",
+    "renderList",
+    "renderDetail",
+    "renderMarkers",
+    "showPeek",
+    "gaugeSVG",
+    "arc",
+    "tickRing",
+    "renderDash",
+    "kc",
+    "openDash",
+    "closeDash",
+    "fireBanner",
+    "tick",
+    "rng",
+    "band",
+    "bandColor",
+    "densBand",
+    "makePlatform",
+    "renderList",
+    "renderMarkers",
+    "showPeek",
+    "barChart",
+    "gaugeSVG",
+    "pol",
+    "arc",
+    "seg",
+    "ringSVG",
+    "renderDash",
+    "kpi",
+    "dUp",
+    "openDash",
+    "closeDash",
+    "fireBanner",
+    "tick"
+  ]
 }
