@@ -1,10 +1,8 @@
-# Orbit Sentinel — GitLab CI/CD Pipeline
+# Crosscut — GitLab CI/CD Pipeline
 
 stages:
   - lint
   - test
-  - build
-  - deploy
 
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
@@ -40,15 +38,6 @@ lint:dashboard:
 test:backend:
   stage: test
   image: python:3.12-slim
-  services:
-    - postgres:16-alpine
-    - redis:7-alpine
-  variables:
-    DATABASE_URL: "postgresql+asyncpg://postgres:postgres@postgres:5432/test_db"
-    REDIS_URL: "redis://redis:6379/0"
-    POSTGRES_DB: test_db
-    POSTGRES_USER: postgres
-    POSTGRES_PASSWORD: postgres
   script:
     - cd backend
     - pip install -e ".[dev]"
@@ -70,48 +59,3 @@ test:dashboard:
   cache:
     paths:
       - .cache/npm
-
-# ── Build ─────────────────────────────────────────────────────────────────────
-
-build:backend:
-  stage: build
-  image: docker:27
-  services:
-    - docker:27-dind
-  script:
-    - docker build -t $CI_REGISTRY_IMAGE/backend:$CI_COMMIT_SHA -f deploy/docker/Dockerfile.backend .
-    - docker tag $CI_REGISTRY_IMAGE/backend:$CI_COMMIT_SHA $CI_REGISTRY_IMAGE/backend:latest
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker push $CI_REGISTRY_IMAGE/backend:$CI_COMMIT_SHA
-    - docker push $CI_REGISTRY_IMAGE/backend:latest
-  only:
-    - main
-
-build:dashboard:
-  stage: build
-  image: docker:27
-  services:
-    - docker:27-dind
-  script:
-    - docker build -t $CI_REGISTRY_IMAGE/dashboard:$CI_COMMIT_SHA -f deploy/docker/Dockerfile.dashboard .
-    - docker tag $CI_REGISTRY_IMAGE/dashboard:$CI_COMMIT_SHA $CI_REGISTRY_IMAGE/dashboard:latest
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
-    - docker push $CI_REGISTRY_IMAGE/dashboard:$CI_COMMIT_SHA
-    - docker push $CI_REGISTRY_IMAGE/dashboard:latest
-  only:
-    - main
-
-# ── Deploy ────────────────────────────────────────────────────────────────────
-
-deploy:staging:
-  stage: deploy
-  image: alpine:latest
-  script:
-    - echo "Deploying to staging..."
-    - echo "Images: $CI_REGISTRY_IMAGE/backend:$CI_COMMIT_SHA"
-    - echo "Images: $CI_REGISTRY_IMAGE/dashboard:$CI_COMMIT_SHA"
-  environment:
-    name: staging
-    url: https://sentinel-staging.example.com
-  only:
-    - main
