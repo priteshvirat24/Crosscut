@@ -48,9 +48,6 @@ function DependencyGraph({ currentStage, results }: { currentStage: number, resu
   const TOTAL_TESTS = results?.metrics?.total_tests ?? 78;
   const TARGET_TESTS = results?.metrics?.selected_tests ?? 12;
 
-  const TOTAL_TESTS = results?.metrics?.total_tests ?? 78;
-  const TARGET_TESTS = results?.metrics?.selected_tests ?? 12;
-
   const testNodes = useMemo(() => {
     const arr = [];
     for (let i = 0; i < TOTAL_TESTS; i++) {
