@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Bright Minimal Architectural Palette */
+    --color-background: #FAFAF8; /* Warm White Base */
+    --color-foreground: #1E1E1E; /* Graphite Text */
+    
+    --color-surface: #F4F4F1; /* Secondary Surface */
+    --color-card: #FFFFFF; /* Pure White Cards */
+    --color-card-border: #E5E5E2; /* Subtle Border */
+    
+    --color-primary: #E5484D; /* Deep Vermilion - Use Sparingly */
+    --color-primary-active: #CE2C31;
+    
+    --color-accent: #1E1E1E; /* Graphite */
+    --color-muted: #8B8D86; /* Sage Gray */
+    --color-orbit: #C68A3A; /* Copper Gold for Traversal */
+    
+    --radius-sm: 4px;
+    --radius-md: 6px;
+    --radius-lg: 8px;
+    --radius-full: 9999px;
+
+    /* Base Font Override to SF Pro / Inter */
+    --font-sans: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-card-border);
+  }
+  
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--color-foreground);
+  }
+}
+
+/* Premium Architectural Typography */
+.text-display-mega {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+  color: var(--color-foreground);
+}
+
+.text-display-lg {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: var(--color-foreground);
+}
+
+.text-display-md {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--color-foreground);
+}
+
+.glass-header {
+  background-color: rgba(250, 250, 248, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-card-border);
+}
+
+/* Buttons */
+.button-primary {
+  background: var(--color-foreground);
+  color: #FFFFFF;
+  font-weight: 500;
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  font-size: 0.875rem;
+  border: 1px solid transparent;
+}
+
+.button-primary:hover {
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.button-vermilion {
+  background: var(--color-primary);
+  color: #FFFFFF;
+  font-weight: 500;
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  font-size: 0.875rem;
+}
+
+.button-vermilion:hover {
+  background: var(--color-primary-active);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(229, 72, 77, 0.3);
+}
+
+.button-outline {
+  background: transparent;
+  color: var(--color-foreground);
+  font-weight: 500;
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-card-border);
+  transition: all 0.15s ease;
+  font-size: 0.875rem;
+}
+
+.button-outline:hover {
+  background: var(--color-surface);
+  border-color: #D4D4D0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+::-webkit-scrollbar-thumb {
+  background: #E5E5E2; 
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D4D4D0; 
+}
+
+/* Utilities */
+.text-orbit {
+  color: var(--color-orbit);
+}
+.bg-orbit {
+  background-color: var(--color-orbit);
+}
+.text-vermilion {
+  color: var(--color-primary);
+}
+.text-graphite {
+  color: var(--color-foreground);
+}
+.text-sage {
+  color: var(--color-muted);
+}

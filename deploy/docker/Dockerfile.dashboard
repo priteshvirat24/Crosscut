@@ -1,0 +1,26 @@
+# ── Dashboard ──────────────────────────────────────────────────────────────────
+FROM node:20-alpine AS dashboard-builder
+
+WORKDIR /app
+COPY dashboard/package*.json ./
+RUN npm ci
+
+COPY dashboard/ ./
+RUN npm run build
+
+FROM node:20-alpine AS dashboard
+
+WORKDIR /app
+COPY --from=dashboard-builder /app/.next/standalone ./
+COPY --from=dashboard-builder /app/.next/static ./.next/static
+COPY --from=dashboard-builder /app/public ./public
+
+EXPOSE 3000
+
+ENV NODE_ENV=production
+ENV HOSTNAME="0.0.0.0"
+
+HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
+  CMD wget -qO- http://localhost:3000/ || exit 1
+
+CMD ["node", "server.js"]

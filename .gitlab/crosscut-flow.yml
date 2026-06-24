@@ -1,0 +1,41 @@
+name: crosscut-ci-optimizer
+description: "Optimizes CI runs by querying GitLab Orbit for impacted dependencies."
+
+trigger:
+  event: merge_request
+  action: [opened, update]
+
+permissions:
+  - orbit:read
+  - ci:write
+  - merge_requests:write
+
+steps:
+  - id: extract_diff
+    action: system.diff_analyzer
+    description: "Extract changed symbols from the MR diff."
+
+  - id: orbit_query
+    action: orbit.traversal
+    params:
+      node_id: "${{ extract_diff.changed_symbol }}"
+      relationship: "incoming"
+      max_depth: 5
+    description: "Traverse the Orbit Knowledge Graph to find cross-repo dependents."
+
+  - id: select_tests
+    action: system.test_selector
+    params:
+      orbit_nodes: "${{ orbit_query.nodes }}"
+    description: "Identify all test files mapped to the discovered dependent services."
+
+  - id: run_pipeline
+    action: system.trigger_pipeline
+    params:
+      tests: "${{ select_tests.final_tests }}"
+    description: "Generate and trigger a targeted child pipeline."
+
+  - id: report_savings
+    action: system.mr_comment
+    params:
+      message: "Crosscut discovered ${{ select_tests.count }} tests impacted by this change. Targeted pipeline triggered."
