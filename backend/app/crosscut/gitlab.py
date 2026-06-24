@@ -30,10 +30,7 @@ def post_mr_note(config: CrosscutConfig, body: str) -> dict[str, Any]:
             "(set via CI variables / CI_* env)."
         )
     project = urllib.parse.quote_plus(str(config.project_id))
-    url = (
-        f"{config.gitlab_url}/api/v4/projects/{project}"
-        f"/merge_requests/{config.mr_iid}/notes"
-    )
+    url = f"{config.gitlab_url}/api/v4/projects/{project}/merge_requests/{config.mr_iid}/notes"
     data = urllib.parse.urlencode({"body": body}).encode()
     req = urllib.request.Request(
         url,

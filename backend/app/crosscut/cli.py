@@ -67,13 +67,19 @@ def main(argv: list[str] | None = None) -> int:
         else:
             stats = client.index(args.repo)
             g = stats.get("graph", {})
-            print(f"crosscut: indexed {g.get('files', '?')} files, "
-                  f"{g.get('definitions', '?')} definitions", file=sys.stderr)
+            print(
+                f"crosscut: indexed {g.get('files', '?')} files, "
+                f"{g.get('definitions', '?')} definitions",
+                file=sys.stderr,
+            )
 
     diff_text = _read_diff(args)
     changed = diffmod.parse_diff(diff_text)
-    print(f"crosscut: {len(changed)} changed symbol(s) in "
-          f"{len(diffmod.changed_files(diff_text))} file(s)", file=sys.stderr)
+    print(
+        f"crosscut: {len(changed)} changed symbol(s) in "
+        f"{len(diffmod.changed_files(diff_text))} file(s)",
+        file=sys.stderr,
+    )
 
     try:
         graph = client.build_graph()
@@ -110,9 +116,7 @@ def main(argv: list[str] | None = None) -> int:
     with open(args.out_pipeline, "w", encoding="utf-8") as fh:
         fh.write(to_yaml(pipeline))
 
-    comment = render_comment(
-        result, timing=timing, changed_symbols=[c.name for c in changed]
-    )
+    comment = render_comment(result, timing=timing, changed_symbols=[c.name for c in changed])
     with open(args.out_comment, "w", encoding="utf-8") as fh:
         fh.write(comment)
     print(f"crosscut: wrote {args.out_pipeline} and {args.out_comment}", file=sys.stderr)
@@ -131,7 +135,7 @@ def main(argv: list[str] | None = None) -> int:
                 "seconds_saved": timing.seconds_saved,
                 "measured": timing.measured,
             }
-        
+
         with open(args.out_json, "w", encoding="utf-8") as fh:
             json.dump(out_data, fh, indent=2)
         print(f"crosscut: wrote {args.out_json}", file=sys.stderr)

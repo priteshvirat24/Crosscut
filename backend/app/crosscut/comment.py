@@ -22,9 +22,7 @@ def render_comment(
 ) -> str:
     m = result.metrics
     mode_label = (
-        "Orbit Remote (cross-repo)"
-        if result.mode is Mode.REMOTE
-        else "Orbit Local (single-repo)"
+        "Orbit Remote (cross-repo)" if result.mode is Mode.REMOTE else "Orbit Local (single-repo)"
     )
 
     lines: list[str] = []
@@ -33,9 +31,7 @@ def render_comment(
 
     # ── headline number ──────────────────────────────────────────────────────────
     if result.run_full_suite:
-        lines.append(
-            f"**Running the full suite ({m.total_tests} tests)** — conservative fallback."
-        )
+        lines.append(f"**Running the full suite ({m.total_tests} tests)** — conservative fallback.")
     else:
         headline = (
             f"**Running {m.selected_tests} of {m.total_tests} tests "
@@ -64,9 +60,7 @@ def render_comment(
         lines.append("|------|--------|")
         for t in result.selected[:MAX_LISTED]:
             label = (
-                f"`{t.file_path}::{t.name}`"
-                if t.name != "*"
-                else f"`{t.file_path}` (whole file)"
+                f"`{t.file_path}::{t.name}`" if t.name != "*" else f"`{t.file_path}` (whole file)"
             )
             lines.append(f"| {label} | {t.reason} |")
         if len(result.selected) > MAX_LISTED:
