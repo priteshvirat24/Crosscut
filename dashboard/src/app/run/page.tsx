@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { OrbitReactor } from "@/components/3d/OrbitReactor";
-import { Play, Pause, RotateCcw, ChevronDown, Check } from "lucide-react";
+import { Play, Pause, RotateCcw, ChevronDown, Check, Network } from "lucide-react";
 import Link from "next/link";
 
 /* ─── SCENE DATA ─── */
