@@ -13,20 +13,20 @@ from pathlib import PurePosixPath
 # A file is a test file if any of these hold (checked against the POSIX path).
 _TEST_DIR_PARTS = {"tests", "test", "spec", "__tests__"}
 _TEST_FILENAME_PATTERNS = (
-    re.compile(r"^test_.+\.py$"),  # pytest / unittest:  test_foo.py
-    re.compile(r".+_test\.py$"),  # go-style / pytest:  foo_test.py
-    re.compile(r".+_test\.rb$"),  # ruby minitest:      foo_test.rb
-    re.compile(r".+_spec\.rb$"),  # rspec:              foo_spec.rb
-    re.compile(r".+\.test\.[jt]sx?$"),  # jest/vitest:        foo.test.ts
-    re.compile(r".+\.spec\.[jt]sx?$"),  # jasmine/jest:       foo.spec.tsx
+    re.compile(r"^test_.+\.py$"),        # pytest / unittest:  test_foo.py
+    re.compile(r".+_test\.py$"),         # go-style / pytest:  foo_test.py
+    re.compile(r".+_test\.rb$"),         # ruby minitest:      foo_test.rb
+    re.compile(r".+_spec\.rb$"),         # rspec:              foo_spec.rb
+    re.compile(r".+\.test\.[jt]sx?$"),   # jest/vitest:        foo.test.ts
+    re.compile(r".+\.spec\.[jt]sx?$"),   # jasmine/jest:       foo.spec.tsx
 )
 
 # Within a test file, a definition is a test case if its name matches these.
 _TEST_NAME_PATTERNS = (
-    re.compile(r"^test_"),  # python:  def test_*
-    re.compile(r"^test[A-Z]"),  # junit-ish: testSomething
-    re.compile(r"^should[A-Z\s]"),  # bdd:     should validate ...
-    re.compile(r"^it[\s_]"),  # bdd:     it should ...
+    re.compile(r"^test_"),               # python:  def test_*
+    re.compile(r"^test[A-Z]"),           # junit-ish: testSomething
+    re.compile(r"^should[A-Z\s]"),       # bdd:     should validate ...
+    re.compile(r"^it[\s_]"),             # bdd:     it should ...
 )
 # A class is a test container if it looks like one (its methods named test_* count).
 _TEST_CLASS_PATTERN = re.compile(r"^Test[A-Z0-9_]|.*Test$|.*Tests$|.*Spec$")
@@ -101,10 +101,10 @@ def is_test_class(name: str, definition_type: str, file_path: str) -> bool:
 def _stem(file_path: str) -> str:
     """Filename without its test/spec affixes or extension. ``test_foo.py`` -> ``foo``."""
     name = PurePosixPath(file_path.replace("\\", "/")).name
-    name = re.sub(r"\.(test|spec)\.[jt]sx?$", "", name)  # foo.test.ts -> foo
-    name = re.sub(r"\.[A-Za-z0-9]+$", "", name)  # strip remaining extension
-    name = re.sub(r"^test_", "", name)  # test_foo -> foo
-    name = re.sub(r"_(test|spec)$", "", name)  # foo_test -> foo
+    name = re.sub(r"\.(test|spec)\.[jt]sx?$", "", name)   # foo.test.ts -> foo
+    name = re.sub(r"\.[A-Za-z0-9]+$", "", name)            # strip remaining extension
+    name = re.sub(r"^test_", "", name)                     # test_foo -> foo
+    name = re.sub(r"_(test|spec)$", "", name)              # foo_test -> foo
     return name
 
 

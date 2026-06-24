@@ -215,7 +215,7 @@ function ExplainabilityCards({ results }: { results: any }) {
     >
       {(results?.selected_tests || IMPACTED_TESTS).slice(0, 3).map((test: any, i: number) => (
         <motion.div
-          key={`${test.name}-${i}`}
+          key={test.name}
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: i * 0.3, duration: 0.5, ease: "easeOut" as const }}

@@ -85,7 +85,9 @@ class OrbitClient:
         if self.db_path:
             cmd += ["--db", self.db_path]
         try:
-            proc = subprocess.run(cmd, capture_output=True, text=True, timeout=self.timeout)
+            proc = subprocess.run(
+                cmd, capture_output=True, text=True, timeout=self.timeout
+            )
         except FileNotFoundError as exc:
             install_url = (
                 "https://gitlab.com/gitlab-org/orbit/knowledge-graph/-/raw/main/install.sh"

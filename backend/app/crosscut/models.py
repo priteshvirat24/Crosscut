@@ -71,7 +71,11 @@ class CodeGraph:
         return [d for d in self.definitions.values() if d.file_path == file_path]
 
     def find(self, file_path: str, name: str) -> list[Definition]:
-        return [d for d in self.definitions.values() if d.file_path == file_path and d.name == name]
+        return [
+            d
+            for d in self.definitions.values()
+            if d.file_path == file_path and d.name == name
+        ]
 
 
 @dataclass(frozen=True)
