@@ -16,9 +16,7 @@ from app.crosscut.models import ChangedSymbol, ChangeType
 # Symbol-definition patterns across languages. Group 1 = name, group 2 = params (opt),
 # group 3 = return type (python, opt).
 _PATTERNS: dict[str, re.Pattern[str]] = {
-    "python_def": re.compile(
-        r"^\s*(?:async\s+)?def\s+(\w+)\s*\(([^)]*)\)(?:\s*->\s*([^:]+))?"
-    ),
+    "python_def": re.compile(r"^\s*(?:async\s+)?def\s+(\w+)\s*\(([^)]*)\)(?:\s*->\s*([^:]+))?"),
     "python_class": re.compile(r"^\s*class\s+(\w+)"),
     "js_function": re.compile(
         r"^\s*(?:export\s+)?(?:default\s+)?(?:async\s+)?function\s+(\w+)\s*\(([^)]*)\)"
@@ -143,12 +141,8 @@ def _extract_symbol_changes(hunks: list[dict[str, Any]]) -> list[ChangedSymbol]:
     changes: list[ChangedSymbol] = []
     for hunk in hunks:
         file_path = hunk["file"]
-        removed_syms = {
-            s[0]: s for s in (_match_symbol(ln) for ln in hunk["removed"]) if s
-        }
-        added_syms = {
-            s[0]: s for s in (_match_symbol(ln) for ln in hunk["added"]) if s
-        }
+        removed_syms = {s[0]: s for s in (_match_symbol(ln) for ln in hunk["removed"]) if s}
+        added_syms = {s[0]: s for s in (_match_symbol(ln) for ln in hunk["added"]) if s}
 
         # Deleted or modified (present in removed)
         for name, (_rname, rparams, rret, rkind) in removed_syms.items():

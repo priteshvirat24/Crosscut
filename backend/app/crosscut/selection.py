@@ -216,9 +216,7 @@ def select_tests(
             notes=tuple(notes),
         )
 
-    ordered = tuple(
-        sorted(selected.values(), key=lambda t: (t.depth, t.file_path, t.name))
-    )
+    ordered = tuple(sorted(selected.values(), key=lambda t: (t.depth, t.file_path, t.name)))
     return SelectionResult(
         selected=ordered,
         metrics=SelectionMetrics(total_tests=total, selected_tests=len(ordered)),
