@@ -73,6 +73,9 @@ function DependencyGraph({ currentStage }: { currentStage: number }) {
   const targetMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#E5484D", roughness: 0.2, metalness: 0.8 }), []);
   const ambientMat = useMemo(() => new THREE.MeshStandardMaterial({ color: "#8B8D86", roughness: 0.2, metalness: 0.8, transparent: true, opacity: 0.3 }), []);
 
+  // Pre-allocate vector to prevent insane Garbage Collection stutter (50k objects/sec)
+  const targetScaleVec = useMemo(() => new THREE.Vector3(), []);
+
   useFrame((state, delta) => {
     if (!groupRef.current) return;
 
@@ -82,14 +85,16 @@ function DependencyGraph({ currentStage }: { currentStage: number }) {
 
     if (centerNodeRef.current) {
       const breath = 1 + Math.sin(state.clock.elapsedTime * 1.5) * 0.04;
-      centerNodeRef.current.scale.lerp(new THREE.Vector3(breath, breath, breath), 0.05);
+      targetScaleVec.set(breath, breath, breath);
+      centerNodeRef.current.scale.lerp(targetScaleVec, 0.05);
     }
 
     REPOSITORIES.forEach((_, i) => {
       const mesh = repoRefs.current[i];
       if (mesh) {
         const breath = 1 + Math.sin(state.clock.elapsedTime * 1.2 + i) * 0.03;
-        mesh.scale.lerp(new THREE.Vector3(breath, breath, breath), 0.05);
+        targetScaleVec.set(breath, breath, breath);
+        mesh.scale.lerp(targetScaleVec, 0.05);
       }
     });
 
@@ -99,20 +104,25 @@ function DependencyGraph({ currentStage }: { currentStage: number }) {
 
       if (currentStage >= 4 && currentStage < 6) {
         if (node.isTarget) {
-          mesh.scale.lerp(new THREE.Vector3(1.8, 1.8, 1.8), 0.03);
+          targetScaleVec.set(1.8, 1.8, 1.8);
+          mesh.scale.lerp(targetScaleVec, 0.03);
         } else {
-          mesh.scale.lerp(new THREE.Vector3(0, 0, 0), 0.02 + (i % 20) * 0.001);
+          targetScaleVec.set(0.001, 0.001, 0.001); // 0.001 prevents degenerate matrix vibration
+          mesh.scale.lerp(targetScaleVec, 0.02 + (i % 20) * 0.001);
         }
       } else if (currentStage >= 6) {
         if (node.isTarget) {
           const pulse = 1.5 + Math.sin(state.clock.elapsedTime * 2 + i) * 0.15;
-          mesh.scale.lerp(new THREE.Vector3(pulse, pulse, pulse), 0.05);
+          targetScaleVec.set(pulse, pulse, pulse);
+          mesh.scale.lerp(targetScaleVec, 0.05);
         } else {
-          mesh.scale.lerp(new THREE.Vector3(0, 0, 0), 0.1);
+          targetScaleVec.set(0.001, 0.001, 0.001);
+          mesh.scale.lerp(targetScaleVec, 0.1);
         }
       } else {
         const breath = 1 + Math.sin(state.clock.elapsedTime * 0.8 + i * 0.3) * 0.05;
-        mesh.scale.lerp(new THREE.Vector3(breath, breath, breath), 0.03);
+        targetScaleVec.set(breath, breath, breath);
+        mesh.scale.lerp(targetScaleVec, 0.03);
       }
     });
   });
