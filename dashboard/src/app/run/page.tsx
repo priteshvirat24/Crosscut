@@ -223,7 +223,7 @@ function ExplainabilityCards({ results }: { results: any }) {
         >
           <div className="text-xs font-semibold text-[#1E1E1E] truncate">{test.name}</div>
           <div className="flex items-center gap-2 mt-1">
-            <span className="text-[9px] font-bold uppercase tracking-widest text-[#8B8D86]">{test.reason || test.type || 'Dependency'}</span>
+            <span className="text-[9px] font-bold uppercase tracking-widest text-[#8B8D86]">{test.reason || test.reason || test.type || 'Dependency' || 'Dependency'}</span>
             <span className="px-1.5 py-0.5 bg-[#F4F4F1] text-[#C68A3A] text-[9px] font-bold rounded">
               L{test.depth}
             </span>
@@ -374,6 +374,14 @@ function RunModeContent() {
   const [playing, setPlaying] = useState(false);
   const [scene, setScene] = useState(-1);
   const [progress, setProgress] = useState(0);
+
+  const [results, setResults] = useState<any>(null);
+  useEffect(() => {
+    fetch('/api/results').then(r => r.json()).then(data => {
+      if (!data.error) setResults(data);
+    });
+  }, []);
+
 
   const [results, setResults] = useState<any>(null);
   useEffect(() => {
