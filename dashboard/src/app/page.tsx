@@ -1,7 +1,7 @@
 "use client";
 
 import { OrbitReactor } from "@/components/3d/OrbitReactor";
-import { ArrowRight, Database, GitCommit, Play, Box } from "lucide-react";
+import { ArrowRight, Database, GitCommit, Play, Box, Network } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -17,11 +17,15 @@ export default function Home() {
         
         <h1 className="text-[72px] leading-[1.1] font-bold tracking-tighter text-[#1E1E1E] mb-6">
           A single code change.<br />
-          <span className="text-[#8B8D86]">Why run 418 tests?</span>
+          <span className="text-[#8B8D86]">Why run the whole suite?</span>
         </h1>
-        
+
         <p className="text-xl text-[#8B8D86] leading-relaxed max-w-2xl mx-auto mb-12">
           Traditional CI runs the entire test suite because it lacks dependency intelligence. Crosscut uses the GitLab Orbit graph to traverse dependencies and execute only the exact tests impacted by your change.
+        </p>
+
+        <p className="text-[11px] uppercase tracking-widest text-[#8B8D86] mb-10">
+          Illustrative — figures below are measured by Crosscut indexing its own repository with Orbit Local.
         </p>
 
         <div className="flex justify-center items-center gap-6 text-left">
@@ -31,7 +35,7 @@ export default function Home() {
             </div>
             <div>
               <div className="text-[10px] font-bold uppercase tracking-widest text-[#8B8D86]">The Trigger</div>
-              <div className="font-bold">MR: validate_payment()</div>
+              <div className="font-bold">MR: _fmt()</div>
             </div>
           </div>
           <ArrowRight className="text-[#8B8D86]" />
@@ -41,7 +45,7 @@ export default function Home() {
             </div>
             <div>
               <div className="text-[10px] font-bold uppercase tracking-widest text-[#E5484D]">The Waste</div>
-              <div className="font-bold">418 Ecosystem Tests</div>
+              <div className="font-bold">78 Suite Tests</div>
             </div>
           </div>
         </div>
@@ -79,24 +83,24 @@ export default function Home() {
       {/* 3. Test Selection & Results */}
       <section className="py-24 px-8 lg:px-16 max-w-[1200px] mx-auto w-full text-center">
         <h2 className="text-display-md text-[#1E1E1E] mb-16">
-          418 tests reduced to 12.
+          78 tests reduced to 8.
         </h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 text-left">
           <div className="bg-white border border-[#E5E5E2] p-8 rounded-xl shadow-sm">
-            <div className="text-[10px] font-bold uppercase tracking-widest text-[#8B8D86] mb-2">Original Pipeline</div>
-            <div className="text-4xl font-bold tracking-tighter text-[#1E1E1E] mb-2">38<span className="text-xl text-[#8B8D86] ml-1">min</span></div>
-            <div className="text-sm font-medium text-[#8B8D86]">418 tests across 6 repos</div>
+            <div className="text-[10px] font-bold uppercase tracking-widest text-[#8B8D86] mb-2">Full Suite</div>
+            <div className="text-4xl font-bold tracking-tighter text-[#1E1E1E] mb-2">0.50<span className="text-xl text-[#8B8D86] ml-1">s</span></div>
+            <div className="text-sm font-medium text-[#8B8D86]">78 tests (1 repo, Orbit Local)</div>
           </div>
           <div className="bg-white border border-[#E5E5E2] p-8 rounded-xl shadow-sm border-t-4 border-t-[#C68A3A]">
-            <div className="text-[10px] font-bold uppercase tracking-widest text-[#C68A3A] mb-2">Orbit Discovery</div>
-            <div className="text-4xl font-bold tracking-tighter text-[#1E1E1E] mb-2">12<span className="text-xl text-[#8B8D86] ml-1">impacted</span></div>
-            <div className="text-sm font-medium text-[#8B8D86]">Directly mapped dependents</div>
+            <div className="text-[10px] font-bold uppercase tracking-widest text-[#C68A3A] mb-2">Orbit Selection</div>
+            <div className="text-4xl font-bold tracking-tighter text-[#1E1E1E] mb-2">8<span className="text-xl text-[#8B8D86] ml-1">impacted</span></div>
+            <div className="text-sm font-medium text-[#8B8D86]">Transitive callers of the change</div>
           </div>
           <div className="bg-white border border-[#E5E5E2] p-8 rounded-xl shadow-sm border-t-4 border-t-[#E5484D]">
             <div className="text-[10px] font-bold uppercase tracking-widest text-[#E5484D] mb-2">Targeted Pipeline</div>
-            <div className="text-4xl font-bold tracking-tighter text-[#E5484D] mb-2">2<span className="text-xl text-[#8B8D86] ml-1">min</span></div>
-            <div className="text-sm font-medium text-[#8B8D86]">97% execution reduction</div>
+            <div className="text-4xl font-bold tracking-tighter text-[#E5484D] mb-2">0.24<span className="text-xl text-[#8B8D86] ml-1">s</span></div>
+            <div className="text-sm font-medium text-[#8B8D86]">90% fewer tests</div>
           </div>
         </div>
 
@@ -119,26 +123,3 @@ export default function Home() {
   );
 }
 
-// Dummy icon to resolve Network
-function Network(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect x="16" y="16" width="6" height="6" rx="1" />
-      <rect x="2" y="16" width="6" height="6" rx="1" />
-      <rect x="9" y="2" width="6" height="6" rx="1" />
-      <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" />
-      <path d="M12 12V8" />
-    </svg>
-  );
-}

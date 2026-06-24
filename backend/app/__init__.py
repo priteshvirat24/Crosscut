@@ -1,3 +1,3 @@
-"""Orbit Sentinel — AI-powered Cross-Repository Change Intelligence Agent."""
+"""Crosscut — graph-grounded targeted test selection for GitLab merge requests."""
 
-__version__ = "1.0.0"
+__version__ = "0.1.0"

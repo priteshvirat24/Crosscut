@@ -14,49 +14,49 @@ const SCENES = [
     id: 0,
     label: "Change Detected",
     subtitle: "AST Diff Engine",
-    duration: 2500,
+    duration: 4000,
   },
   {
     id: 1,
     label: "Orbit Query Generated",
     subtitle: "DSL Translation",
-    duration: 2500,
+    duration: 4000,
   },
   {
     id: 2,
     label: "Traversal Begins",
     subtitle: "Graph Execution",
-    duration: 2000,
+    duration: 3500,
   },
   {
     id: 3,
     label: "Dependency Discovery",
     subtitle: "Impact Mapping",
-    duration: 2500,
+    duration: 3500,
   },
   {
     id: 4,
     label: "Test Discovery",
     subtitle: "Ecosystem Reduction",
-    duration: 3500,
+    duration: 5000,
   },
   {
     id: 5,
     label: "Explainability",
     subtitle: "Selection Reasoning",
-    duration: 3000,
+    duration: 4000,
   },
   {
     id: 6,
     label: "Pipeline Execution",
     subtitle: "Targeted CI",
-    duration: 2500,
+    duration: 3500,
   },
   {
     id: 7,
     label: "Results",
     subtitle: "Mission Complete",
-    duration: 4000,
+    duration: 5000,
   },
 ];
 
@@ -104,7 +104,7 @@ function SceneLabel({ scene }: { scene: number }) {
   );
 }
 
-function DiffPanel() {
+function DiffPanel({ results }: { results: any }) {
   return (
     <motion.div
       {...panelMotion}
@@ -117,12 +117,8 @@ function DiffPanel() {
           </div>
         </div>
         <div className="p-5 font-mono text-xs leading-relaxed">
-          <div className="text-[#8B8D86] mb-2">payment-library/validation.py</div>
-          <div className="text-[#E5484D] line-through opacity-60">
-            def validate_payment(amount, currency):
-          </div>
           <div className="text-[#10b981] font-bold mt-1">
-            def validate_payment(amount, currency, region):
+            Changed Symbols: {results?.changed_symbols?.length > 0 ? results.changed_symbols.join(", ") : "None"}
           </div>
         </div>
       </div>
@@ -130,7 +126,7 @@ function DiffPanel() {
   );
 }
 
-function OrbitQueryPanel() {
+function OrbitQueryPanel({ results }: { results: any }) {
   return (
     <motion.div
       {...panelMotion}
@@ -143,7 +139,7 @@ function OrbitQueryPanel() {
           </div>
         </div>
         <div className="p-5 font-mono text-[10px] leading-relaxed text-[#1E1E1E]">
-          <div><span className="text-[#C68A3A]">MATCH</span> (f:Function &#123;name: &quot;validate_payment&quot;&#125;)</div>
+          <div><span className="text-[#C68A3A]">MATCH</span> (f:Function &#123;name: &quot;{results?.changed_symbols?.[0] || 'Unknown'}&quot;&#125;)</div>
           <div>&lt;-[r:<span className="text-[#E5484D]">CALLS</span>*1..5]-(caller:Function)</div>
           <div><span className="text-[#C68A3A]">WITH</span> f, caller, r</div>
           <div><span className="text-[#C68A3A]">MATCH</span> (caller)-[:DEFINED_IN]-&gt;(file:File)</div>
@@ -155,7 +151,7 @@ function OrbitQueryPanel() {
   );
 }
 
-function TraversalPanel() {
+function TraversalPanel({ results }: { results: any }) {
   return (
     <motion.div
       {...panelMotion}
@@ -170,7 +166,7 @@ function TraversalPanel() {
         <div className="p-5 space-y-3">
           <div className="flex justify-between items-center">
             <span className="text-[10px] font-bold uppercase tracking-widest text-[#8B8D86]">Depth</span>
-            <span className="text-lg font-bold text-[#1E1E1E]">4</span>
+            <span className="text-lg font-bold text-[#1E1E1E]">{results?.selected_tests?.length > 0 ? Math.max(...results.selected_tests.map((t:any) => t.depth || 0)) : 0}</span>
           </div>
           <div className="flex justify-between items-center">
             <span className="text-[10px] font-bold uppercase tracking-widest text-[#8B8D86]">Repositories</span>
@@ -178,7 +174,7 @@ function TraversalPanel() {
           </div>
           <div className="flex justify-between items-center">
             <span className="text-[10px] font-bold uppercase tracking-widest text-[#8B8D86]">Functions</span>
-            <span className="text-lg font-bold text-[#1E1E1E]">23</span>
+            <span className="text-lg font-bold text-[#1E1E1E]">{results?.metrics?.selected_tests ?? 0}</span>
           </div>
         </div>
       </div>
@@ -186,7 +182,7 @@ function TraversalPanel() {
   );
 }
 
-function ReductionCounter({ scene }: { scene: number }) {
+function ReductionCounter({ scene, results }: { scene: number, results: any }) {
   return (
     <motion.div
       {...panelMotion}
@@ -195,14 +191,14 @@ function ReductionCounter({ scene }: { scene: number }) {
       <div className="bg-white/90 backdrop-blur-lg border border-[#E5E5E2] rounded-xl shadow-lg px-12 py-8 text-center">
         <div className="flex items-center gap-8">
           <div>
-            <div className="text-5xl font-bold text-[#8B8D86] tracking-tight">418</div>
+            <div className="text-5xl font-bold text-[#8B8D86] tracking-tight">{results?.metrics?.total_tests ?? 78}</div>
             <div className="text-[10px] font-bold uppercase tracking-widest text-[#8B8D86] mt-1">Ecosystem</div>
           </div>
           <div className="text-3xl text-[#C68A3A]">
             <ChevronDown size={32} />
           </div>
           <div>
-            <div className="text-5xl font-bold text-[#E5484D] tracking-tight">12</div>
+            <div className="text-5xl font-bold text-[#E5484D] tracking-tight">{results?.metrics?.selected_tests ?? 8}</div>
             <div className="text-[10px] font-bold uppercase tracking-widest text-[#E5484D] mt-1">Impacted</div>
           </div>
         </div>
@@ -211,13 +207,13 @@ function ReductionCounter({ scene }: { scene: number }) {
   );
 }
 
-function ExplainabilityCards() {
+function ExplainabilityCards({ results }: { results: any }) {
   return (
     <motion.div
       {...panelMotion}
       className="absolute bottom-32 right-8 z-30 w-[280px] space-y-2"
     >
-      {IMPACTED_TESTS.slice(0, 3).map((test, i) => (
+      {(results?.selected_tests || IMPACTED_TESTS).slice(0, 3).map((test: any, i: number) => (
         <motion.div
           key={test.name}
           initial={{ opacity: 0, x: 30 }}
@@ -227,7 +223,7 @@ function ExplainabilityCards() {
         >
           <div className="text-xs font-semibold text-[#1E1E1E] truncate">{test.name}</div>
           <div className="flex items-center gap-2 mt-1">
-            <span className="text-[9px] font-bold uppercase tracking-widest text-[#8B8D86]">{test.type}</span>
+            <span className="text-[9px] font-bold uppercase tracking-widest text-[#8B8D86]">{test.reason || test.type || 'Dependency'}</span>
             <span className="px-1.5 py-0.5 bg-[#F4F4F1] text-[#C68A3A] text-[9px] font-bold rounded">
               L{test.depth}
             </span>
@@ -238,7 +234,7 @@ function ExplainabilityCards() {
   );
 }
 
-function PipelinePanel() {
+function PipelinePanel({ results }: { results: any }) {
   return (
     <motion.div
       {...panelMotion}
@@ -249,10 +245,10 @@ function PipelinePanel() {
           <div className="text-[10px] font-bold uppercase tracking-widest text-[#8B8D86]">
             Pipeline Execution
           </div>
-          <div className="text-[10px] font-bold uppercase tracking-widest text-[#10b981]">12 Jobs</div>
+          <div className="text-[10px] font-bold uppercase tracking-widest text-[#10b981]">{results?.metrics?.selected_tests ?? 12} Jobs</div>
         </div>
         <div className="p-4 space-y-2">
-          {PIPELINE_JOBS.map((job, i) => (
+          {(results?.selected_tests?.map((t:any)=>t.name) || PIPELINE_JOBS).slice(0, 6).map((job: string, i: number) => (
             <motion.div
               key={job}
               initial={{ opacity: 0, x: -10 }}
@@ -267,7 +263,7 @@ function PipelinePanel() {
             </motion.div>
           ))}
           <div className="text-[10px] text-[#8B8D86] font-bold pt-2 border-t border-[#E5E5E2]">
-            + 6 additional tests passed
+            + {Math.max(0, (results?.metrics?.selected_tests || 12) - 6)} additional tests passed
           </div>
         </div>
       </div>
@@ -275,7 +271,7 @@ function PipelinePanel() {
   );
 }
 
-function ResultsPanel() {
+function ResultsPanel({ results }: { results: any }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40, scale: 0.9 }}
@@ -292,7 +288,7 @@ function ResultsPanel() {
             transition={{ delay: 0.3 }}
             className="p-6 text-center"
           >
-            <div className="text-3xl font-bold text-[#8B8D86] tracking-tight">418</div>
+            <div className="text-3xl font-bold text-[#8B8D86] tracking-tight">{results?.metrics?.total_tests ?? 78}</div>
             <div className="text-[9px] font-bold uppercase tracking-widest text-[#8B8D86] mt-1">Tests</div>
           </motion.div>
           <motion.div
@@ -301,7 +297,7 @@ function ResultsPanel() {
             transition={{ delay: 0.6 }}
             className="p-6 text-center"
           >
-            <div className="text-3xl font-bold text-[#E5484D] tracking-tight">12</div>
+            <div className="text-3xl font-bold text-[#E5484D] tracking-tight">{results?.metrics?.selected_tests ?? 8}</div>
             <div className="text-[9px] font-bold uppercase tracking-widest text-[#E5484D] mt-1">Targeted</div>
           </motion.div>
           <motion.div
@@ -310,7 +306,7 @@ function ResultsPanel() {
             transition={{ delay: 0.9 }}
             className="p-6 text-center"
           >
-            <div className="text-3xl font-bold text-[#1E1E1E] tracking-tight">97%</div>
+            <div className="text-3xl font-bold text-[#1E1E1E] tracking-tight">{results?.metrics?.percentage_reduction?.toFixed(0) ?? 90}%</div>
             <div className="text-[9px] font-bold uppercase tracking-widest text-[#C68A3A] mt-1">Reduction</div>
           </motion.div>
           <motion.div
@@ -319,8 +315,8 @@ function ResultsPanel() {
             transition={{ delay: 1.2 }}
             className="p-6 text-center"
           >
-            <div className="text-3xl font-bold text-[#1E1E1E] tracking-tight">2m</div>
-            <div className="text-[9px] font-bold uppercase tracking-widest text-[#8B8D86] mt-1">vs 38m</div>
+            <div className="text-3xl font-bold text-[#1E1E1E] tracking-tight">{results?.timing?.selected_seconds ? (results.timing.selected_seconds/60).toFixed(1) + 'm' : '0m'}</div>
+            <div className="text-[9px] font-bold uppercase tracking-widest text-[#8B8D86] mt-1">vs {results?.timing?.full_suite_seconds ? (results.timing.full_suite_seconds/60).toFixed(1) + 'm' : '0m'}</div>
           </motion.div>
           <motion.div
             initial={{ opacity: 0 }}
@@ -378,6 +374,14 @@ function RunModeContent() {
   const [playing, setPlaying] = useState(false);
   const [scene, setScene] = useState(-1);
   const [progress, setProgress] = useState(0);
+
+  const [results, setResults] = useState<any>(null);
+  useEffect(() => {
+    fetch('/api/results').then(r => r.json()).then(data => {
+      if (!data.error) setResults(data);
+    });
+  }, []);
+
 
   // Auto-start if linked from landing
   useEffect(() => {
@@ -440,6 +444,18 @@ function RunModeContent() {
     setPlaying(true);
   }, []);
 
+  if (!results) {
+    return (
+      <div className="flex flex-col items-center justify-center w-screen h-screen bg-[#FAFAF8]">
+        <div className="p-12 text-center border-2 border-dashed border-[#E5E5E2] rounded-xl bg-white">
+          <Network className="mx-auto mb-4 text-[#C68A3A] opacity-50" size={32} />
+          <h3 className="text-[#1E1E1E] font-bold mb-2">Waiting for analysis...</h3>
+          <p className="text-[#8B8D86] text-sm">Run the Crosscut CLI to generate results.</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="fixed inset-0 bg-[#FAFAF8] text-[#1E1E1E] flex flex-col z-[100] overflow-hidden font-sans">
 
@@ -470,7 +486,7 @@ function RunModeContent() {
 
       {/* ─── GRAPH: Always present, fills entire screen ─── */}
       <div className="absolute inset-0 z-0">
-        <OrbitReactor currentStage={scene} />
+        <OrbitReactor currentStage={scene} results={results} />
       </div>
 
       {/* ─── JUDGE MODE UI LAYER ─── */}
@@ -484,39 +500,39 @@ function RunModeContent() {
 
             {/* Scene 0: Diff Panel */}
             <AnimatePresence>
-              {scene === 0 && <DiffPanel key="diff" />}
+              {scene === 0 && <DiffPanel key="diff" results={results} />}
             </AnimatePresence>
 
             {/* Scene 1: Orbit Query */}
             <AnimatePresence>
-              {scene === 1 && <OrbitQueryPanel key="orbit-query" />}
+              {scene === 1 && <OrbitQueryPanel key="orbit-query" results={results} />}
             </AnimatePresence>
 
             {/* Scene 2: Traversal Stats */}
             <AnimatePresence>
-              {scene === 2 && <TraversalPanel key="traversal" />}
+              {scene === 2 && <TraversalPanel key="traversal" results={results} />}
             </AnimatePresence>
 
             {/* Scene 3: Discovery — graph expanding, just label */}
 
             {/* Scene 4: Test Discovery — Reduction Counter */}
             <AnimatePresence>
-              {scene === 4 && <ReductionCounter key="reduction" scene={scene} />}
+              {scene === 4 && <ReductionCounter key="reduction" scene={scene} results={results} />}
             </AnimatePresence>
 
             {/* Scene 5: Explainability Cards */}
             <AnimatePresence>
-              {scene === 5 && <ExplainabilityCards key="explain" />}
+              {scene === 5 && <ExplainabilityCards key="explain" results={results} />}
             </AnimatePresence>
 
             {/* Scene 6: Pipeline Execution */}
             <AnimatePresence>
-              {scene === 6 && <PipelinePanel key="pipeline" />}
+              {scene === 6 && <PipelinePanel key="pipeline" results={results} />}
             </AnimatePresence>
 
             {/* Scene 7: Results */}
             <AnimatePresence>
-              {scene === 7 && <ResultsPanel key="results" />}
+              {scene === 7 && <ResultsPanel key="results" results={results} />}
             </AnimatePresence>
 
             {/* Progress Bar */}

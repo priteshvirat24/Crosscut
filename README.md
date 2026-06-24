@@ -5,7 +5,7 @@
 <h1 align="center">Crosscut</h1>
 
 <p align="center">
-  <strong>A GitLab Duo Agent Platform Flow powered by GitLab Orbit. Run only the tests that matter.</strong>
+  <strong>Run only the tests a change can possibly break. Powered by GitLab Orbit.</strong>
 </p>
 
 <p align="center">
@@ -13,7 +13,6 @@
   <img src="https://img.shields.io/badge/python-3.12+-blue.svg" alt="Python" />
   <img src="https://img.shields.io/badge/next.js-15-black.svg" alt="Next.js" />
   <img src="https://img.shields.io/badge/GitLab-Orbit-orange.svg" alt="GitLab Orbit" />
-  <img src="https://img.shields.io/badge/Duo_Agent-Platform-green.svg" alt="Duo Agent Platform" />
 </p>
 
 ---
@@ -24,7 +23,7 @@
 Organizations run hundreds or thousands of tests for every merge request because they simply do not know which tests are actually affected by a change. Small code changes trigger massive CI workloads. Shared libraries multiply this cost exponentially across repositories. Developers wait longer for feedback, companies spend millions on unnecessary compute, and CI infrastructure scales inefficiently.
 
 **How Crosscut Fixes It**  
-Crosscut is a **GitLab Duo Agent Platform Flow** that acts as an autonomous CI optimizer. When a developer opens a Merge Request, the Crosscut Agent analyzes the diff and extracts the changed symbols. It then queries the **GitLab Orbit Knowledge Graph** (via `glab orbit remote`) to traverse incoming call relationships across all repositories. Crosscut discovers the exact transitive impact of the change, selects only the relevant test files, and dynamically generates a targeted child pipeline.
+Crosscut acts as an autonomous CI optimizer. When a developer opens a Merge Request, the Crosscut CLI analyzes the diff and extracts the changed symbols. It then queries the **GitLab Orbit Knowledge Graph** (via DuckDB) to traverse incoming call relationships. Crosscut discovers the exact transitive impact of the change, selects only the relevant test files, and dynamically generates a targeted child pipeline. No LLMs, no hallucinations—just deterministic AST graph traversal.
 
 **What Changes for the Developer?**  
 Developers no longer wait 45 minutes for a massive mono-repo or cross-repo test suite to run just to merge a 5-line change. Crosscut instantly reduces the CI payload (often by 90%+), executing only what matters. Feedback loops become instant. 
@@ -33,38 +32,54 @@ Developers no longer wait 45 minutes for a massive mono-repo or cross-repo test 
 
 ## 🚀 Features & Functionality
 
-Crosscut operates completely natively within the GitLab ecosystem:
-1. **Event Triggered**: Listens for GitLab Merge Request events.
-2. **Diff Analysis**: An agent identifies changed symbols (e.g., `validate_payment()`).
-3. **Orbit Traversal**: Issues precise Query DSL to the Orbit graph to find cross-repo dependents.
-4. **Test Selection**: Cross-references Orbit nodes with known test files.
-5. **Automated Action**: Triggers a targeted CI pipeline and posts the compute savings as a comment directly on the MR.
+Crosscut operates natively within the GitLab ecosystem:
+1. **Diff Analysis**: Identifies changed symbols from the Git diff.
+2. **Orbit Traversal**: Issues precise Query DSL to the Orbit graph to find cross-repo dependents.
+3. **Test Selection**: Cross-references Orbit nodes with known test files deterministically.
+4. **Automated Action**: Outputs a targeted CI pipeline (`crosscut-targeted.yml`) and an MR comment payload (`crosscut-comment.md`).
+5. **Authentic Visualization**: Next.js dashboard reads the CLI's exact JSON exhaust (`crosscut-results.json`) to render a 100% authentic 3D representation of the impact graph.
 
 ## 🛠️ Architecture
 
-Crosscut is built as a highly visual, living demonstration of the Duo Agent Platform:
-- **Backend**: Python 3.12, LangGraph (Agent workflows), and a dedicated `OrbitClient` subsystem for DSL generation.
-- **Frontend**: A stunning Next.js 15 cinematic dashboard featuring real-time React Flow graphs, 3D interactive Orbit Reactors, and deep visualization of the Agent's decision cycle.
+Crosscut is built as a highly robust, production-ready tool:
+- **Backend**: Python 3.12 pure CLI with zero LLM dependencies. Uses DuckDB to query Orbit locally, ensuring <1s selection logic.
+- **Frontend**: A stunning Next.js 15 cinematic dashboard featuring 3D interactive Orbit Reactors powered by React Three Fiber.
+- **Integration**: 100% authentic data layer. The Next.js frontend strictly renders the exact `total_tests` and `selected_tests` computed by the Python backend.
 
 ## 🏃 Quick Start
 
+### 1. Run the Engine
+Index your repository with Orbit, then run Crosscut to generate the pipeline and results:
 ```bash
-git clone https://gitlab.com/your-org/crosscut.git
-cd crosscut
-make install
-cp .env.example .env
-make dev
+cd backend
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+
+# Index your codebase
+orbit index /path/to/your/repo
+
+# Run Crosscut
+crosscut --repo /path/to/your/repo --git-range "HEAD~1...HEAD" --out-json ../crosscut-results.json
 ```
 
-Visit `http://localhost:3000` to see the live dashboard, explore the **Orbit Query Viewer**, and watch the **Platform Integration Ecosystem** in action.
+### 2. View the Dashboard
+Start the visualizer to explore the exact JSON exhaust generated by the engine:
+```bash
+cd dashboard
+npm install
+npm run dev
+```
+
+Visit `http://localhost:3000` to see the live 3D Orbit Reactor visualize the transitive impact of your commit!
 
 ## 🎥 Hackathon Demo Scenario
 
 **Trigger:** MR `!342` modifies `validate_payment()` in `payment-library`.  
-**Orbit Discovery:** Orbit Remote traverses incoming calls, crossing into 4 other repositories (`checkout-service`, `billing-service`, etc.).  
-**Agent Decision:** The Duo Agent identifies that out of 418 total tests across the ecosystem, only 12 are transitively impacted.  
-**Action:** A pipeline runs 12 tests.  
-**Result:** 97% compute reduction. Execution drops from 38 minutes to 2 minutes.
+**Orbit Discovery:** Orbit traverses incoming calls, crossing into dependents.  
+**Selection Core:** The deterministic engine identifies that out of 91 total tests, only 12 are transitively impacted.  
+**Action:** A pipeline is generated to run exactly 12 tests.  
+**Result:** 87% compute reduction. Execution drops from 38 minutes to 2 minutes.
 
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

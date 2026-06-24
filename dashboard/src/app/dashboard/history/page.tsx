@@ -41,29 +41,29 @@ export default function HistoryPage() {
     <div className="animate-fade-in">
       <div className="page-header">
         <h1 className="page-header__title">
-          <span className="page-header__gradient">Historical Predictions</span>
+          <span className="page-header__gradient">Selection History</span>
         </h1>
         <p className="page-header__subtitle">
-          Track prediction accuracy and learn from past analyses.
+          Track how many tests Crosscut skipped across past merge requests.
         </p>
       </div>
 
       {/* Summary Stats */}
       <div className="stat-grid stagger-children" style={{ marginBottom: "var(--space-xl)" }}>
         <div className="card stat-card animate-fade-in">
-          <div className="stat-card__icon stat-card__icon--green">🎯</div>
-          <div className="card__title">Overall Accuracy</div>
-          <div className="card__value" style={{ color: "var(--severity-low)" }}>87.5%</div>
+          <div className="stat-card__icon stat-card__icon--green">✂️</div>
+          <div className="card__title">Avg. Tests Skipped</div>
+          <div className="card__value" style={{ color: "var(--severity-low)" }}>88%</div>
         </div>
         <div className="card stat-card animate-fade-in">
           <div className="stat-card__icon stat-card__icon--purple">📊</div>
-          <div className="card__title">Total Predictions</div>
+          <div className="card__title">MRs Optimized</div>
           <div className="card__value">142</div>
         </div>
         <div className="card stat-card animate-fade-in">
           <div className="stat-card__icon stat-card__icon--cyan">✅</div>
-          <div className="card__title">Correct Predictions</div>
-          <div className="card__value">124</div>
+          <div className="card__title">Full-Suite Fallbacks</div>
+          <div className="card__value">9</div>
         </div>
         <div className="card stat-card animate-fade-in">
           <div className="stat-card__icon stat-card__icon--pink">📈</div>

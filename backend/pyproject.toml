@@ -1,72 +1,41 @@
 [project]
-name = "orbit-sentinel"
-version = "1.0.0"
-description = "AI-powered Cross-Repository Change Intelligence Agent for GitLab"
+name = "crosscut"
+version = "0.1.0"
+description = "Graph-grounded targeted test selection for GitLab merge requests, powered by GitLab Orbit"
 readme = "README.md"
 license = {text = "MIT"}
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 authors = [
-    {name = "Orbit Sentinel Contributors"},
+    {name = "Crosscut Contributors"},
 ]
-keywords = ["gitlab", "orbit", "ai", "agents", "code-intelligence", "langraph"]
+keywords = ["gitlab", "orbit", "knowledge-graph", "ci", "test-selection", "code-intelligence"]
 classifiers = [
     "Development Status :: 4 - Beta",
-    "Framework :: FastAPI",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Topic :: Software Development :: Quality Assurance",
+    "Topic :: Software Development :: Testing",
 ]
 
+# The selection engine is stdlib-only. PyYAML is used to emit the child-pipeline YAML.
+# Orbit Local is invoked as an external CLI; the GitLab/Orbit-Remote calls use urllib.
 dependencies = [
-    # Web Framework
-    "fastapi>=0.115.0",
-    "uvicorn[standard]>=0.32.0",
-    "python-multipart>=0.0.12",
-    "websockets>=14.0",
-    # AI / Agents
-    "langgraph>=0.4.0",
-    "langchain>=0.3.0",
-    "langchain-openai>=0.3.0",
-    "langchain-anthropic>=0.3.0",
-    "langchain-google-genai>=2.1.0",
-    "pydantic-ai>=0.1.0",
-    # Data Validation
-    "pydantic>=2.9.0",
-    "pydantic-settings>=2.6.0",
-    # Database
-    "sqlalchemy[asyncio]>=2.0.36",
-    "asyncpg>=0.30.0",
-    "aiosqlite>=0.20.0",
-    "alembic>=1.14.0",
-    # Cache & Queue
-    "redis>=5.2.0",
-    "celery[redis]>=5.4.0",
-    # HTTP Client
-    "httpx>=0.28.0",
-    # Observability
-    "structlog>=24.4.0",
-    "opentelemetry-api>=1.28.0",
-    "opentelemetry-sdk>=1.28.0",
-    "opentelemetry-instrumentation-fastapi>=0.49b0",
-    # Utilities
-    "python-dotenv>=1.0.1",
-    "PyYAML>=6.0.2",
-    "tenacity>=9.0.0",
+    "PyYAML>=6.0",
 ]
 
 [project.optional-dependencies]
 dev = [
     "pytest>=8.3.0",
-    "pytest-asyncio>=0.24.0",
     "pytest-cov>=6.0.0",
-    "pytest-mock>=3.14.0",
-    "httpx>=0.28.0",
     "ruff>=0.8.0",
     "mypy>=1.13.0",
-    "pre-commit>=4.0.0",
-    "factory-boy>=3.3.1",
+    "types-PyYAML>=6.0",
 ]
+
+[project.scripts]
+crosscut = "app.crosscut.cli:main"
 
 [build-system]
 requires = ["setuptools>=75.0", "wheel"]
@@ -76,22 +45,22 @@ build-backend = "setuptools.build_meta"
 include = ["app*"]
 
 [tool.ruff]
-target-version = "py312"
+target-version = "py311"
 line-length = 100
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "N", "UP", "B", "A", "SIM", "TCH"]
+ignore = ["A003"]
 
 [tool.ruff.lint.isort]
 known-first-party = ["app"]
 
 [tool.pytest.ini_options]
-asyncio_mode = "auto"
 testpaths = ["tests"]
-addopts = "-v --tb=short"
+addopts = "-q --tb=short"
 
 [tool.mypy]
-python_version = "3.12"
-strict = true
+python_version = "3.11"
 warn_return_any = true
 warn_unused_configs = true
+ignore_missing_imports = true

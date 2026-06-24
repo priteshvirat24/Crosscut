@@ -38,8 +38,8 @@ export function Header() {
             href="/dashboard"
             className={cn(
               "text-sm font-medium px-3 py-1.5 rounded transition-colors",
-              pathname.startsWith("/dashboard") 
-                ? "bg-[#F4F4F1] text-[#1E1E1E] border border-[#E5E5E2]" 
+              pathname.startsWith("/dashboard")
+                ? "bg-[#F4F4F1] text-[#1E1E1E] border border-[#E5E5E2]"
                 : "text-[#8B8D86] hover:text-[#1E1E1E]"
             )}
           >

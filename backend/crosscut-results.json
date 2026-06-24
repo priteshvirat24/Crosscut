@@ -1,0 +1,10 @@
+{
+  "metrics": {
+    "total_tests": 2,
+    "selected_tests": 0,
+    "percentage_reduction": 100.0
+  },
+  "run_full_suite": false,
+  "selected_tests": [],
+  "changed_symbols": []
+}
