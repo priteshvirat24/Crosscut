@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/screenshots/logo.png" alt="Crosscut" width="120" />
+  <img src="dashboard/public/crosscut.svg" alt="Crosscut" width="120" />
 </p>
 
 <h1 align="center">Crosscut</h1>
@@ -17,53 +17,50 @@
 
 ---
 
-## 📖 The Story
+## 🏆 Hackathon Mission
 
-**The Developer Pain Point**  
-Organizations run hundreds or thousands of tests for every merge request because they simply do not know which tests are actually affected by a change. Small code changes trigger massive CI workloads. Shared libraries multiply this cost exponentially across repositories. Developers wait longer for feedback, companies spend millions on unnecessary compute, and CI infrastructure scales inefficiently.
+**The Problem:** Organizations run thousands of tests for every merge request because they do not know which tests are actually affected by a change. Small code changes trigger massive CI workloads. Developers wait longer for feedback, companies spend millions on unnecessary compute, and CI infrastructure scales inefficiently.
 
-**How Crosscut Fixes It**  
-Crosscut acts as an autonomous CI optimizer. When a developer opens a Merge Request, the Crosscut CLI analyzes the diff and extracts the changed symbols. It then queries the **GitLab Orbit Knowledge Graph** (via DuckDB) to traverse incoming call relationships. Crosscut discovers the exact transitive impact of the change, selects only the relevant test files, and dynamically generates a targeted child pipeline. No LLMs, no hallucinations—just deterministic AST graph traversal.
+**The Solution:** Crosscut acts as an autonomous, deterministic CI optimizer. When a developer opens a Merge Request, the Crosscut CLI analyzes the diff and extracts the changed symbols. It then queries the **GitLab Orbit Knowledge Graph** (via DuckDB) to traverse incoming call relationships. Crosscut discovers the exact transitive impact of the change, selects only the relevant test files, and dynamically generates a targeted child pipeline. 
 
-**What Changes for the Developer?**  
-Developers no longer wait 45 minutes for a massive mono-repo or cross-repo test suite to run just to merge a 5-line change. Crosscut instantly reduces the CI payload (often by 90%+), executing only what matters. Feedback loops become instant. 
-
----
+No LLMs, no hallucinations—just pure deterministic AST graph traversal.
 
 ## 🚀 Features & Functionality
 
-Crosscut operates natively within the GitLab ecosystem:
-1. **Diff Analysis**: Identifies changed symbols from the Git diff.
-2. **Orbit Traversal**: Issues precise Query DSL to the Orbit graph to find cross-repo dependents.
-3. **Test Selection**: Cross-references Orbit nodes with known test files deterministically.
+Crosscut operates natively within the GitLab ecosystem and leverages the full power of Orbit:
+1. **Language Agnostic**: Because it relies on Orbit's native parsers, Crosscut works instantly on Python, TypeScript, Go, Java (e.g. Android repositories), and more!
+2. **Diff Analysis**: Intelligently identifies changed symbols directly from the Git diff.
+3. **Orbit Traversal**: Issues precise Query DSL to the local Orbit graph to find dependents.
 4. **Automated Action**: Outputs a targeted CI pipeline (`crosscut-targeted.yml`) and an MR comment payload (`crosscut-comment.md`).
-5. **Authentic Visualization**: Next.js dashboard reads the CLI's exact JSON exhaust (`crosscut-results.json`) to render a 100% authentic 3D representation of the impact graph.
+5. **Cinematic Visualization**: Next.js dashboard reads the CLI's exact JSON exhaust (`crosscut-results.json`) to render a 100% authentic 3D representation of the impact graph using React Three Fiber.
 
 ## 🛠️ Architecture
 
 Crosscut is built as a highly robust, production-ready tool:
-- **Backend**: Python 3.12 pure CLI with zero LLM dependencies. Uses DuckDB to query Orbit locally, ensuring <1s selection logic.
-- **Frontend**: A stunning Next.js 15 cinematic dashboard featuring 3D interactive Orbit Reactors powered by React Three Fiber.
-- **Integration**: 100% authentic data layer. The Next.js frontend strictly renders the exact `total_tests` and `selected_tests` computed by the Python backend.
+- **Backend**: Python 3.12 pure CLI. Uses DuckDB to query Orbit locally, ensuring sub-second selection logic.
+- **Frontend**: A stunning Next.js 15 dashboard featuring 3D interactive Orbit Reactors.
+- **Integration**: 100% authentic data layer. The Next.js frontend strictly renders the exact `total_tests` and `selected_tests` computed by the Python backend in real-time.
 
 ## 🏃 Quick Start
 
 ### 1. Run the Engine
-Index your repository with Orbit, then run Crosscut to generate the pipeline and results:
+You can point Crosscut at **any** local repository. First, index your repository with Orbit, then run Crosscut to generate the pipeline and results:
 ```bash
 cd backend
 python -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
 
-# Index your codebase
-orbit index /path/to/your/repo
+# Index your target codebase (can be ANY language Orbit supports!)
+cd /path/to/your/repo
+orbit index .
 
-# Run Crosscut
-crosscut --repo /path/to/your/repo --git-range "HEAD~1...HEAD" --out-json ../crosscut-results.json
+# Run Crosscut to analyze the latest commit
+cd /path/to/Crosscut
+crosscut --repo /path/to/your/repo --git-range "HEAD~1...HEAD" --out-json crosscut-results.json
 ```
 
-### 2. View the Dashboard
+### 2. View the Live Dashboard
 Start the visualizer to explore the exact JSON exhaust generated by the engine:
 ```bash
 cd dashboard
@@ -71,15 +68,7 @@ npm install
 npm run dev
 ```
 
-Visit `http://localhost:3000` to see the live 3D Orbit Reactor visualize the transitive impact of your commit!
-
-## 🎥 Hackathon Demo Scenario
-
-**Trigger:** MR `!342` modifies `validate_payment()` in `payment-library`.  
-**Orbit Discovery:** Orbit traverses incoming calls, crossing into dependents.  
-**Selection Core:** The deterministic engine identifies that out of 91 total tests, only 12 are transitively impacted.  
-**Action:** A pipeline is generated to run exactly 12 tests.  
-**Result:** 87% compute reduction. Execution drops from 38 minutes to 2 minutes.
+Visit `http://localhost:3000` to see the live 3D Orbit Reactor visualize the transitive impact of your commit! If you re-run the CLI against a different repository (like a large Java codebase), simply refresh the dashboard to see the new data rendered instantly!
 
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
