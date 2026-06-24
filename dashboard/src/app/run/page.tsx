@@ -383,14 +383,6 @@ function RunModeContent() {
   }, []);
 
 
-  const [results, setResults] = useState<any>(null);
-  useEffect(() => {
-    fetch('/api/results').then(r => r.json()).then(data => {
-      if (!data.error) setResults(data);
-    });
-  }, []);
-
-
   // Auto-start if linked from landing
   useEffect(() => {
     if (autoPlay) {
